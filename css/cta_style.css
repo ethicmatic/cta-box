@@ -1,0 +1,100 @@
+/*
+Plugin Name: Switch CTA Box
+Plugin URI: www.wppluginwiki.com
+Description: Switch CTA Box plugin helped to creat lovely CTA box. Switch CTA Box anywhere in WordPress posts, pages and widgets.
+Author: @wppluginwiki
+Author URI: http://wppluginwiki.com/
+Version: a1.0
+Tags: cta box, wordpress box, subscription box, shortcode box, custom post type, ash, minimalist
+License: GPL2
+*/
+
+.cta_wrap.container {
+    background-color: #eee;
+    padding: 15px;
+    width: 100%;
+    margin: 0 auto 20px;
+    text-align: center;
+    border: 2px dashed #000;
+}
+
+.cta_title {
+    background: #686868;
+    padding: 7px 10px;
+}
+
+h3.boxtittle {
+    color: #EDEDED;
+    font-weight: 500;
+    text-transform: capitalize;
+    margin-bottom: 0px;
+    border: 1px solid;
+}
+
+.cta_des {
+    padding: 27px 5px 5px;
+}
+
+.cta_bbtn a.cta_box_btn {
+    text-decoration: none;
+    box-shadow: 0px 1px 0px rgb(239, 94, 32);
+    background-color: transparent;
+    color: #fff;
+    padding: 0.8% 3.5%;
+    border: 2px solid #EF5E29;
+    border-radius: 5px;
+}
+
+
+.cta_bbtn a.cta_box_btn:hover {
+    color: #fff;
+	box-shadow: none;
+	background-color: #EF5E29;
+}
+
+/*
+@post display template css
+@ash.if
+*/
+
+.cta_wrap.cta_tem_one.container {
+    background-color: #83B9B4;
+    padding-top: 0;
+    border-color: transparent;
+    color: #EDEDED;
+}
+
+.cta_tem_one .cta_title {
+    background: #686868;
+    padding: 7px 10px;
+}
+
+.cta_tem_one h3.boxtittle {
+    color: #EDEDED;
+    font-weight: 500;
+    text-transform: capitalize;
+    margin-bottom: 0px;
+    border: 1px solid;
+	font-size: 20px;
+}
+
+.cta_tem_one .cta_des {
+    padding: 5% 2% 2%;
+}
+
+.cta_tem_one .cta_bbtn a.cta_box_btn {
+    text-decoration: none;
+    box-shadow: 0px 1px 0px rgb(239, 94, 32);
+    background-color: transparent;
+    color: #fff;
+    padding: 0.8% 3.5%;
+    border: 2px solid #EF5E29;
+    border-radius: 5px;
+}
+
+
+.cta_tem_one .cta_bbtn a.cta_box_btn:hover {
+    color: #fff;
+	box-shadow: none;
+	background-color: #EF5E29;
+}
