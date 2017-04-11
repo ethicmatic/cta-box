@@ -5,7 +5,7 @@ function wppw_cta_box_shortcode_out_put( $atts ) {
 			'id' => 'no id',
 		), $atts, 'wppw_cta_box' );
 	ob_start();
-	require ('box_display_template.php');
+	require ('box_display_orng_template.php');
 	$output = ob_get_contents();
 	ob_end_clean();
 	return $output;

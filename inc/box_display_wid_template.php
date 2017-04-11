@@ -4,7 +4,7 @@ $cta_box_description = get_post_meta($atts['id'], 'cta_box_description', true);
 $cta_box_button_id = get_post_meta($atts['id'], 'cta_box_button_id', true);
 $cta_box_button_text = get_post_meta($atts['id'], 'cta_box_button_text', true);
 ?>
-<div class="cta_wrap cta_tem_one container">
+<div class="cta_wrap cta_tem_wid container">
 
 	<div class="cta_title">
 		<h3 class="boxtittle"><?php echo get_the_title( $atts['id'] ) ?></h3>
