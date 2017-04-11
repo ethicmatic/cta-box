@@ -53,7 +53,7 @@ h3.boxtittle {
 }
 
 /*
-@post display template css
+@post display template one css
 @ash.if
 */
 
@@ -97,4 +97,84 @@ h3.boxtittle {
     color: #fff;
 	box-shadow: none;
 	background-color: #EF5E29;
+}
+
+
+/*
+@post display template two css
+@ash.if
+*/
+
+.cta_wrap.cta_tem_wid.container {
+    background-color: #535353;
+    width: 100%;
+    border: none;
+    padding: 15px 30px 45px;
+}
+
+.cta_tem_wid .cta_des {
+    padding: 27px 5px 5px;
+    text-align: center;
+    color: #eee;
+}
+
+.cta_tem_wid .cta_bbtn a.cta_box_btn {
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0.9% 3.5%;
+}
+
+.cta_tem_wid h3.boxtittle {
+    color: #535353;
+    text-shadow: -1px -1px 0 #eee, 1px -1px 0 #eee, -1px 1px 0 #eee, 1px 1px 0 #eee;
+    font-size: 25px;
+    border: 0px;
+    padding-top: 20px;
+}
+
+.cta_tem_wid .cta_title {
+    background: #989898;
+    padding: 7px 10px;
+    position: relative;
+    top: -15px;
+    width: 100%;
+    max-width: 270px;
+    margin: 0 auto;
+}
+
+/*
+@post display template orng css
+@ash.if
+*/
+
+.cta_wrap.cta_tem_orng.container {
+    background-color: #EF5E29;
+    border: 5px solid #fff;
+}
+
+.cta_tem_orng .cta_title {
+    background: transparent;
+    padding: 7px 12px;
+    text-align: left;
+}
+
+.cta_tem_orng h3.boxtittle {
+    border: 0px;
+    font-weight: 600;
+}
+
+.cta_tem_orng .cta_des {
+    padding: 10px 13px 5px;
+    color: #eee;
+    text-align: left;
+}
+
+.cta_tem_orng a.cta_box_btn {
+    border-color: #eee;
+    border-radius: 0PX;
+}
+
+.cta_tem_orng .cta_bbtn {
+    text-align: right;
+    padding-right: 12px;
 }
