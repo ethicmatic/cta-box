@@ -9,6 +9,7 @@ $cta_box_button_text = get_post_meta($atts['id'], 'cta_box_button_text', true);
 	<div class="cta_title">
 		<h3 class="boxtittle"><?php echo get_the_title( $atts['id'] ) ?></h3>
 	</div>
+	<div class="triangle"></div>
 	
 	<div class="cta_des">
 		<p><?php echo $cta_box_description ?></p>

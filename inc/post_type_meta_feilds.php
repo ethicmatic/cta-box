@@ -1,10 +1,13 @@
 <?php
 function add_cta_box_metaboxes() {
-	add_meta_box('cta_box_description', 'Box Description', 'cta_box_description_callback', 'CTA Box', 'normal', 'default');
-	add_meta_box('cta_box_button_text', 'CTA Button Text', 'cta_box_button_text_callback', 'CTA Box', 'normal', 'default');
-	add_meta_box('cta_box_button_id', 'CTA Button ID', 'cta_box_button_id_callback', 'CTA Box', 'normal', 'default');
-	add_meta_box('cta_box_button_link', 'CTA Button Link', 'cta_box_button_link_callback', 'CTA Box', 'normal', 'default');
+	add_meta_box('cta_box_description', 'Box Description', 'cta_box_description_callback', 'CTA Box', 'normal', 'high');
+	add_meta_box('cta_box_button_text', 'CTA Button Text', 'cta_box_button_text_callback', 'CTA Box', 'normal', 'high');
+	add_meta_box('cta_box_button_id', 'CTA Button ID', 'cta_box_button_id_callback', 'CTA Box', 'normal', 'high');
+	add_meta_box('cta_box_button_link', 'CTA Button Link', 'cta_box_button_link_callback', 'CTA Box', 'normal', 'high');
 	add_meta_box('cta_box_show_shortcode', 'CTA Box Shortcode To Display', 'cta_box_show_shortcode_callback', 'CTA Box', 'side', 'high');
+	add_meta_box('cta_box_template_select', 'Select Template for This Box', 'cta_box_template_select_callback', 'CTA Box', 'normal', 'high');
+	add_meta_box('cta_box_contact_dev', 'Get You WordPress Service Done!!', 'cta_box_contact_dev_callback', 'CTA Box', 'side', 'low');
+	add_meta_box('cta_box_update_coming', 'Next Update', 'cta_box_update_coming_callback', 'CTA Box', 'normal', 'high');
 }
 add_action( 'add_meta_boxes', 'add_cta_box_metaboxes' );
 
@@ -20,7 +23,7 @@ function cta_box_button_id_callback() {
 	$cta_box_button_id = get_post_meta($post->ID, 'cta_box_button_id', true);
 	
 	// Echo out the field
-	echo '<input type="text" name="cta_box_button_id" value="' . $cta_box_button_id  . '" class="widefat" /><p class="description">Please enter the button ID wiithout any spaces!</p>';
+	echo '<input type="text" name="cta_box_button_id" value="' . $cta_box_button_id  . '" class="widefat" /><p class="description">Please enter the button ID without any spaces!</p>';
 	
 }
 function cta_box_button_text_callback() {
@@ -62,7 +65,7 @@ function cta_box_button_link_callback() {
 	$cta_box_button_link = get_post_meta($post->ID, 'cta_box_button_link', true);
 	
 	// Echo out the field
-	echo '<input type="text" name="cta_box_button_link" value="' . $cta_box_button_link  . '" class="widefat"  />';
+	echo '<input type="text" name="cta_box_button_link" value="' . $cta_box_button_link  . '" class="widefat"  /><p class="description">CTA button link</p>';
 	
 }
 function cta_box_description_callback() {
@@ -77,8 +80,50 @@ function cta_box_description_callback() {
 	
 	// Echo out the field
 	echo '<textarea name="cta_box_description" value="" class="widefat"  rows="6">'. $cta_box_description  . '
-</textarea>';
+</textarea><p class="description">CTA box main content</p>';
 
+}
+function cta_box_contact_dev_callback(){
+	
+	$output = "<p>Get <i>10% off</i> at any WordPress related services, You are special to us as you are our plugin user</p>";
+	$output .= "<a target=\"blank\" href=\"http://www.wppluginwiki.com/contributors/\">Check out us</a>";
+	
+	echo $output;
+}
+function cta_box_update_coming_callback(){
+	
+	$output = "<p>Next update coming soon</p>";
+	$output .= "<p>Each box color customization feature</p>";
+	$output .= "<p>Button action to pop-up any short-code content</p>";
+	echo $output;
+}
+
+
+function cta_box_template_select_callback(){
+	global $post;
+	
+	// Noncename needed to verify where the data originated
+	echo '<input type="hidden" name="ctaboxmeta_noncename" id="ctaboxmeta_noncename" value="' . 
+	wp_create_nonce( plugin_basename(__FILE__) ) . '" />';
+	
+	// Get the location data if its already been entered
+	$cta_box_template_id = get_post_meta($post->ID, 'cta_box_template_id', true);
+	
+	// Echo out the field
+	?>
+	<label>
+				<select id="cta_box_template_id" name="cta_box_template_id" ?>>
+					<option value="template_one" <?php if($cta_box_template_id  == 'template_one') echo 'selected="selected"'; ?>>Template 1</option>
+					<option value="template_two" <?php if($cta_box_template_id  == 'template_two') echo 'selected="selected"'; ?>>Template 2</option>
+					<option value="template_three" <?php if($cta_box_template_id  == 'template_three') echo 'selected="selected"'; ?>>Template 3</option>
+				</select>
+				<div class="preview_button_holder"><a id="launcce_cta_box_template_preview">Selected Template Layout Preview</a></div>
+				<input type="hidden" id="template_one_image"  value="<?php echo plugins_url( 'admin/preview/template_1.png', __FILE__ )?>" />
+				<input type="hidden" id="template_two_image"  value="<?php echo plugins_url( 'admin/preview/template_2.png', __FILE__ )?>" />
+				<input type="hidden" id="template_three_image"  value="<?php echo plugins_url( 'admin/preview/template_3.png', __FILE__ )?>" />
+				<div id="the_template_preview"><div id="theimage_loader" class="image_conatiner launcedState"></div></div>
+			</label><?php
+	
 }
 // Save the Metabox Data
 
@@ -101,6 +146,7 @@ function wpt_save_ctabox_meta($post_id, $post) {
 	$ctabox_meta['cta_box_button_id'] = $_POST['cta_box_button_id'];
 	$ctabox_meta['cta_box_button_link'] = $_POST['cta_box_button_link'];
 	$ctabox_meta['cta_box_button_text'] = $_POST['cta_box_button_text'];
+	$ctabox_meta['cta_box_template_id'] = $_POST['cta_box_template_id'];
 	
 	// Add values of $downloads_meta as custom fields
 	

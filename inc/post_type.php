@@ -65,3 +65,4 @@ function custom_post_type() {
 add_action( 'init', 'custom_post_type', 0 );
 require_once ('post_type_meta_feilds.php');
 require_once ('shortcode_setup.php');
+require_once ('admin/admin_enuqe.php');
