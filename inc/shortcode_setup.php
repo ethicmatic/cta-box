@@ -1,5 +1,5 @@
 <?php
-function wppw_cta_box_shortcode_out_put( $atts ) {
+function wppw_cttabox_box_shortcode_out_put( $atts ) {
 	$atts = shortcode_atts(
 		array(
 			'id' => 'no id',
@@ -20,4 +20,4 @@ function wppw_cta_box_shortcode_out_put( $atts ) {
 	ob_end_clean();
 	return $output;
 }
-add_shortcode( 'wppw_cta_box', 'wppw_cta_box_shortcode_out_put' );
+add_shortcode( 'wppw_cta_box', 'wppw_cttabox_box_shortcode_out_put' );

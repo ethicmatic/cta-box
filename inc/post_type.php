@@ -3,7 +3,7 @@
 * Creating a function to create our CPT
 */
 
-function custom_post_type() {
+function wppw_cttabox_custom_post_type() {
 
 // Set UI labels for Custom Post Type
 	$labels = array(
@@ -62,7 +62,7 @@ function custom_post_type() {
 * unnecessarily executed. 
 */
 
-add_action( 'init', 'custom_post_type', 0 );
+add_action( 'init', 'wppw_cttabox_custom_post_type', 0 );
 require_once ('post_type_meta_feilds.php');
 require_once ('shortcode_setup.php');
 require_once ('admin/admin_enuqe.php');

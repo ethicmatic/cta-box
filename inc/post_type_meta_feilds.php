@@ -1,18 +1,19 @@
 <?php
-function add_cta_box_metaboxes() {
-	add_meta_box('cta_box_description', 'Box Description', 'cta_box_description_callback', 'CTA Box', 'normal', 'high');
-	add_meta_box('cta_box_button_text', 'CTA Button Text', 'cta_box_button_text_callback', 'CTA Box', 'normal', 'high');
-	add_meta_box('cta_box_button_id', 'CTA Button ID', 'cta_box_button_id_callback', 'CTA Box', 'normal', 'high');
-	add_meta_box('cta_box_button_link', 'CTA Button Link', 'cta_box_button_link_callback', 'CTA Box', 'normal', 'high');
-	add_meta_box('cta_box_show_shortcode', 'CTA Box Shortcode To Display', 'cta_box_show_shortcode_callback', 'CTA Box', 'side', 'high');
-	add_meta_box('cta_box_template_select', 'Select Template for This Box', 'cta_box_template_select_callback', 'CTA Box', 'normal', 'high');
-	add_meta_box('cta_box_contact_dev', 'Get You WordPress Service Done!!', 'cta_box_contact_dev_callback', 'CTA Box', 'side', 'low');
-	add_meta_box('cta_box_update_coming', 'Next Update', 'cta_box_update_coming_callback', 'CTA Box', 'normal', 'high');
+
+function wppw_cttabox_add_cta_box_metaboxes() {
+	add_meta_box('cta_box_description', 'Box Description', 'wppw_cttabox_cta_box_description_callback', 'CTA Box', 'normal', 'high');
+	add_meta_box('cta_box_button_text', 'CTA Button Text', 'wppw_cttabox_cta_box_button_text_callback', 'CTA Box', 'normal', 'high');
+	add_meta_box('cta_box_button_id', 'CTA Button ID', 'wppw_cttabox_cta_box_button_id_callback', 'CTA Box', 'normal', 'high');
+	add_meta_box('cta_box_button_link', 'CTA Button Link', 'wppw_cttabox_cta_box_button_link_callback', 'CTA Box', 'normal', 'high');
+	add_meta_box('cta_box_show_shortcode', 'CTA Box Shortcode To Display', 'wppw_cttabox_cta_box_show_shortcode_callback', 'CTA Box', 'side', 'high');
+	add_meta_box('cta_box_template_select', 'Select Template for This Box', 'wppw_cttabox_cta_box_template_select_callback', 'CTA Box', 'normal', 'high');
+	add_meta_box('cta_box_contact_dev', 'Get You WordPress Service Done!!', 'wppw_cttabox_cta_box_contact_dev_callback', 'CTA Box', 'side', 'low');
+	add_meta_box('cta_box_update_coming', 'Next Update', 'wppw_cttabox_cta_box_update_coming_callback', 'CTA Box', 'normal', 'high');
 }
-add_action( 'add_meta_boxes', 'add_cta_box_metaboxes' );
+add_action( 'add_meta_boxes', 'wppw_cttabox_add_cta_box_metaboxes' );
 
 
-function cta_box_button_id_callback() {
+function wppw_cttabox_cta_box_button_id_callback() {
 	global $post;
 	
 	// Noncename needed to verify where the data originated
@@ -20,13 +21,13 @@ function cta_box_button_id_callback() {
 	wp_create_nonce( plugin_basename(__FILE__) ) . '" />';
 	
 	// Get the location data if its already been entered
-	$cta_box_button_id = get_post_meta($post->ID, 'cta_box_button_id', true);
+	$cta_box_button_id = esc_attr(get_post_meta($post->ID, 'cta_box_button_id', true));
 	
 	// Echo out the field
 	echo '<input type="text" name="cta_box_button_id" value="' . $cta_box_button_id  . '" class="widefat" /><p class="description">Please enter the button ID without any spaces!</p>';
 	
 }
-function cta_box_button_text_callback() {
+function wppw_cttabox_cta_box_button_text_callback() {
 	global $post;
 	
 	// Noncename needed to verify where the data originated
@@ -34,13 +35,13 @@ function cta_box_button_text_callback() {
 	wp_create_nonce( plugin_basename(__FILE__) ) . '" />';
 	
 	// Get the location data if its already been entered
-	$cta_box_button_text = get_post_meta($post->ID, 'cta_box_button_text', true);
+	$cta_box_button_text = esc_attr(get_post_meta($post->ID, 'cta_box_button_text', true));
 	
 	// Echo out the field
 	echo '<input type="text" name="cta_box_button_text" value="' . $cta_box_button_text  . '" class="widefat" />';
 	
 }
-function cta_box_show_shortcode_callback() {
+function wppw_cttabox_cta_box_show_shortcode_callback() {
 	global $post;
 	
 	// Noncename needed to verify where the data originated
@@ -54,7 +55,7 @@ function cta_box_show_shortcode_callback() {
 	echo '<input type="text" value="' . $shortcode  . '" class="widefat"/>';
 	
 }
-function cta_box_button_link_callback() {
+function wppw_cttabox_cta_box_button_link_callback() {
 	global $post;
 	
 	// Noncename needed to verify where the data originated
@@ -62,13 +63,13 @@ function cta_box_button_link_callback() {
 	wp_create_nonce( plugin_basename(__FILE__) ) . '" />';
 	
 	// Get the location data if its already been entered
-	$cta_box_button_link = get_post_meta($post->ID, 'cta_box_button_link', true);
+	$cta_box_button_link = esc_attr(get_post_meta($post->ID, 'cta_box_button_link', true));
 	
 	// Echo out the field
 	echo '<input type="text" name="cta_box_button_link" value="' . $cta_box_button_link  . '" class="widefat"  /><p class="description">CTA button link</p>';
 	
 }
-function cta_box_description_callback() {
+function wppw_cttabox_cta_box_description_callback() {
 	global $post;
 	
 	// Noncename needed to verify where the data originated
@@ -76,21 +77,21 @@ function cta_box_description_callback() {
 	wp_create_nonce( plugin_basename(__FILE__) ) . '" />';
 	
 	// Get the location data if its already been entered
-	$cta_box_description = get_post_meta($post->ID, 'cta_box_description', true);
+	$cta_box_description = esc_attr(get_post_meta($post->ID, 'cta_box_description', true));
 	
 	// Echo out the field
 	echo '<textarea name="cta_box_description" value="" class="widefat"  rows="6">'. $cta_box_description  . '
 </textarea><p class="description">CTA box main content</p>';
 
 }
-function cta_box_contact_dev_callback(){
+function wppw_cttabox_cta_box_contact_dev_callback(){
 	
 	$output = "<p>Get <i>10% off</i> at any WordPress related services, You are special to us as you are our plugin user</p>";
 	$output .= "<a target=\"blank\" href=\"http://www.wppluginwiki.com/contributors/\">Check out us</a>";
 	
 	echo $output;
 }
-function cta_box_update_coming_callback(){
+function wppw_cttabox_cta_box_update_coming_callback(){
 	
 	$output = "<p>Next update coming soon</p>";
 	$output .= "<p>Each box color customization feature</p>";
@@ -99,7 +100,7 @@ function cta_box_update_coming_callback(){
 }
 
 
-function cta_box_template_select_callback(){
+function wppw_cttabox_cta_box_template_select_callback(){
 	global $post;
 	
 	// Noncename needed to verify where the data originated
@@ -107,7 +108,7 @@ function cta_box_template_select_callback(){
 	wp_create_nonce( plugin_basename(__FILE__) ) . '" />';
 	
 	// Get the location data if its already been entered
-	$cta_box_template_id = get_post_meta($post->ID, 'cta_box_template_id', true);
+	$cta_box_template_id = esc_attr(get_post_meta($post->ID, 'cta_box_template_id', true));
 	
 	// Echo out the field
 	?>
@@ -127,7 +128,7 @@ function cta_box_template_select_callback(){
 }
 // Save the Metabox Data
 
-function wpt_save_ctabox_meta($post_id, $post) {
+function wppw_cttabox_wpt_save_ctabox_meta($post_id, $post) {
 	
 	// verify this came from the our screen and with proper authorization,
 	// because save_post can be triggered at other times
@@ -142,11 +143,11 @@ function wpt_save_ctabox_meta($post_id, $post) {
 
 	// OK, we're authenticated: we need to find and save the data
 	// We'll put it into an array to make it easier to loop though.
-	$ctabox_meta['cta_box_description'] = $_POST['cta_box_description'];
-	$ctabox_meta['cta_box_button_id'] = $_POST['cta_box_button_id'];
-	$ctabox_meta['cta_box_button_link'] = $_POST['cta_box_button_link'];
-	$ctabox_meta['cta_box_button_text'] = $_POST['cta_box_button_text'];
-	$ctabox_meta['cta_box_template_id'] = $_POST['cta_box_template_id'];
+	$ctabox_meta['cta_box_description'] = sanitize_text_field($_POST['cta_box_description']);
+	$ctabox_meta['cta_box_button_id'] = sanitize_text_field($_POST['cta_box_button_id']);
+	$ctabox_meta['cta_box_button_link'] = sanitize_text_field($_POST['cta_box_button_link']);
+	$ctabox_meta['cta_box_button_text'] = sanitize_text_field($_POST['cta_box_button_text']);
+	$ctabox_meta['cta_box_template_id'] = sanitize_text_field($_POST['cta_box_template_id']);
 	
 	// Add values of $downloads_meta as custom fields
 	
@@ -164,4 +165,4 @@ function wpt_save_ctabox_meta($post_id, $post) {
 }
 }
 
-add_action('save_post', 'wpt_save_ctabox_meta', 1, 2); // save the custom fields
+add_action('save_post', 'wppw_cttabox_wpt_save_ctabox_meta', 1, 2); // save the custom fields

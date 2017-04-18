@@ -1,12 +1,12 @@
 <?php
-add_filter( 'post_updated_messages', 'my_post_updated_messages' );
+add_filter( 'post_updated_messages', 'wppw_cttabox_my_post_updated_messages' );
 /**
  * Callback for WordPress 'post_updated_messages' filter.
  * 
  * @param  array $messages The array of messages.
  * @return array $messages The array of messages.
  */
-function my_post_updated_messages( $messages ){
+function wppw_cttabox_my_post_updated_messages( $messages ){
         
     global $post;
     
