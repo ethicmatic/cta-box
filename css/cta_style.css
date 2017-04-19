@@ -191,3 +191,20 @@ h3.boxtittle {
     margin-right: auto;
     margin-top: -16px;
 }
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+	.triangle {
+		border-left: 100px solid transparent;
+		border-right: 101px solid transparent;
+		margin-top: -15px;
+	}
+}
+
+@media only screen and (min-device-width : 375px) and (max-device-width : 736px) {
+	.triangle {
+		border-left: 135px solid transparent;
+		border-right: 135px solid transparent;
+		margin-top: -15px;
+	}
+}
